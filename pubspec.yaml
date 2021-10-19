@@ -1,0 +1,39 @@
+name: test191021
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_bloc: 7.1.0
+  flutter_svg: ^0.22.0
+  intl: ^0.17.0
+  provider: ^5.0.0
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  freezed: ^0.14.2
+  build_runner: ^2.0.3
+  flutter_lints: ^1.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/svg_icons/
+
+fonts:
+  - family: Nunito
+    fonts:
+      - asset: fonts/Nunito-Regular.ttf
