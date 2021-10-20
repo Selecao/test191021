@@ -21,24 +21,14 @@ class ChoiceScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               SizedBox(height: MediaQuery.of(context).size.height / 4),
-              ChoiceButton(
+              const ChoiceButton(
                 title: 'Track my period',
                 subtitle: 'contraception and wellbeing',
-                onTap: () {
-                  BlocProvider.of<NavigationBloc>(context).add(
-                    PressedOnPageA(text: 'Track my period'),
-                  );
-                },
               ),
               const SizedBox(height: 73.0),
-              ChoiceButton(
+              const ChoiceButton(
                 title: 'Get pregnant',
                 subtitle: 'learn about reproductive health',
-                onTap: () {
-                  BlocProvider.of<NavigationBloc>(context).add(
-                    PressedOnPageA(text: 'Get pregnant'),
-                  );
-                },
               ),
             ],
           ),
@@ -51,19 +41,21 @@ class ChoiceScreen extends StatelessWidget {
 class ChoiceButton extends StatelessWidget {
   final String title;
   final String subtitle;
-  final VoidCallback? onTap;
 
   const ChoiceButton({
     Key? key,
     required this.title,
     required this.subtitle,
-    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        BlocProvider.of<NavigationBloc>(context).add(
+          NavigationEvent.pressedChoiceButton(text: title),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.only(left: 34, right: 37),
         padding: const EdgeInsets.fromLTRB(12.0, 31.0, 17.0, 31.0),

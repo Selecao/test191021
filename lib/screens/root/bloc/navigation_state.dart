@@ -1,13 +1,12 @@
 part of 'navigation_bloc.dart';
 
-@immutable
-abstract class NavigationState {}
+@freezed
+class NavigationState with _$NavigationState {
+  const factory NavigationState.initial() = _InitialNavigationState;
 
-class StatePageA extends NavigationState {}
+  const factory NavigationState.birthPage() = _BirthPageNavigationState;
 
-class StatePageB extends NavigationState {}
-
-class StatePageC extends NavigationState {
-  final String pageABData;
-  StatePageC({required this.pageABData});
+  const factory NavigationState.resultPage({
+    required final String data,
+  }) = _ResultPageNavigationState;
 }

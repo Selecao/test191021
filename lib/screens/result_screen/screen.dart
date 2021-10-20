@@ -39,23 +39,26 @@ class _SearchTextField extends HookWidget {
     final focusNode = useFocusNode();
     final controller = useTextEditingController(text: text);
 
-    return TextField(
-      controller: controller,
-      focusNode: focusNode,
-      style: AppTextTheme.headline5.copyWith(color: AppColors.violet500),
-      decoration: const InputDecoration(
-        contentPadding: EdgeInsets.symmetric(
-          vertical: 12.0,
-          horizontal: 8.0,
-        ),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.violet500),
-          borderRadius: BorderRadius.all(
-            Radius.circular(100.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: TextField(
+        controller: controller,
+        focusNode: focusNode,
+        style: AppTextTheme.headline5.copyWith(color: AppColors.violet500),
+        decoration: const InputDecoration(
+          contentPadding: EdgeInsets.symmetric(
+            vertical: 12.0,
+            horizontal: 8.0,
+          ),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.violet500),
+            borderRadius: BorderRadius.all(
+              Radius.circular(100.0),
+            ),
           ),
         ),
+        onSubmitted: onSubmitted,
       ),
-      onSubmitted: onSubmitted,
     );
   }
 }

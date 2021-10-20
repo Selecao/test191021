@@ -24,7 +24,7 @@ class DateOfBirthScreen extends StatelessWidget {
             onTap: () {
               if (dateOfBirth != null) {
                 BlocProvider.of<NavigationBloc>(context).add(
-                  PressedOnPageB(
+                  NavigationEvent.pressedDateButton(
                     number: Constants.birthYears[dateOfBirth ?? 0],
                   ),
                 );

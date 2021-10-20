@@ -15,10 +15,12 @@ class RootScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NavigationBloc, NavigationState>(
         builder: (context, state) {
-      if (state is StatePageA) return const ChoiceScreen();
-      if (state is StatePageB) return const DateOfBirthScreen();
-      if (state is StatePageC) return ResultScreen(state.pageABData);
-      return const SizedBox.shrink();
+      return state.maybeMap(
+        initial: (_) => const ChoiceScreen(),
+        birthPage: (_) => const DateOfBirthScreen(),
+        resultPage: (_data) => ResultScreen(_data.data),
+        orElse: () => const SizedBox.shrink(),
+      );
     });
   }
 }

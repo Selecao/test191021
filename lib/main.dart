@@ -15,7 +15,10 @@ void main() {
   );
   runApp(
     BlocProvider(
-      create: (context) => NavigationBloc()..add(AppStarted()),
+      create: (context) => NavigationBloc()
+        ..add(
+          const NavigationEvent.initial(),
+        ),
       child: const CareApp(),
     ),
   );

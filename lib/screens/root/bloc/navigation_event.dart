@@ -1,16 +1,14 @@
 part of 'navigation_bloc.dart';
 
-@immutable
-abstract class NavigationEvent {}
+@freezed
+class NavigationEvent with _$NavigationEvent {
+  const factory NavigationEvent.initial() = _InitialNavigationEvent;
 
-class AppStarted extends NavigationEvent {}
+  const factory NavigationEvent.pressedChoiceButton({
+    required String text,
+  }) = _PressedChoiceButtonNavigationEvent;
 
-class PressedOnPageA extends NavigationEvent {
-  final String text;
-  PressedOnPageA({required this.text});
-}
-
-class PressedOnPageB extends NavigationEvent {
-  final int number;
-  PressedOnPageB({required this.number});
+  const factory NavigationEvent.pressedDateButton({
+    required int number,
+  }) = _PressedDateButtonNavigationEvent;
 }
