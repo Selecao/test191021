@@ -1,24 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test191021/resources/app_color.dart';
 import 'package:test191021/resources/app_text_theme.dart';
 import 'package:test191021/resources/constants.dart';
 import 'package:test191021/resources/icons.dart';
+import 'package:test191021/screens/root/bloc/navigation_bloc.dart';
 
 class DateOfBirthScreen extends StatelessWidget {
   const DateOfBirthScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    int? dateOfBirth;
+
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Stack(
         children: [
           const _Background(),
           _Body(
-            onTap: () {},
-            onSelectedItemChanged: (index) {},
+            onTap: () {
+              if (dateOfBirth != null) {
+                BlocProvider.of<NavigationBloc>(context).add(
+                  PressedOnPageB(
+                    number: Constants.birthYears[dateOfBirth ?? 0],
+                  ),
+                );
+              }
+            },
+            onSelectedItemChanged: (index) {
+              dateOfBirth = index;
+            },
           ),
         ],
       ),

@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test191021/resources/app_color.dart';
 import 'package:test191021/resources/app_text_theme.dart';
 import 'package:test191021/resources/icons.dart';
+import 'package:test191021/screens/root/bloc/navigation_bloc.dart';
 
 class ChoiceScreen extends StatelessWidget {
   const ChoiceScreen({Key? key}) : super(key: key);
@@ -22,13 +24,21 @@ class ChoiceScreen extends StatelessWidget {
               ChoiceButton(
                 title: 'Track my period',
                 subtitle: 'contraception and wellbeing',
-                onTap: () {},
+                onTap: () {
+                  BlocProvider.of<NavigationBloc>(context).add(
+                    PressedOnPageA(text: 'Track my period'),
+                  );
+                },
               ),
               const SizedBox(height: 73.0),
               ChoiceButton(
                 title: 'Get pregnant',
                 subtitle: 'learn about reproductive health',
-                onTap: () {},
+                onTap: () {
+                  BlocProvider.of<NavigationBloc>(context).add(
+                    PressedOnPageA(text: 'Get pregnant'),
+                  );
+                },
               ),
             ],
           ),

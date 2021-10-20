@@ -7,7 +7,8 @@ import 'package:test191021/resources/app_color.dart';
 import 'package:test191021/resources/app_text_theme.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({Key? key}) : super(key: key);
+  final String resultData;
+  const ResultScreen(this.resultData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +16,7 @@ class ResultScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: Center(
         child: _SearchTextField(
-          text:
-              "Some Text asdf asdf sdf asdf asdf asdf asdf asdf asdf asdf asdf asdf",
+          text: resultData,
           onSubmitted: (value) {},
         ),
       ),
