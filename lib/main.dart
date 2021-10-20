@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:flutter_hooks/flutter_hooks.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test191021/resources/app_color.dart';
 import 'package:test191021/resources/app_text_theme.dart';
+import 'package:test191021/resources/constants.dart';
 import 'package:test191021/resources/icons.dart';
-import 'package:test191021/screens/choice/screen.dart';
+import 'package:test191021/screens/date_of_birth/screen.dart';
+import 'package:test191021/screens/result_screen/screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +25,6 @@ void main() {
 class CareApp extends StatelessWidget {
   const CareApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,38 +34,8 @@ class CareApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Nunito',
       ),
-      home: const ChoiceScreen(),
+      // home: const DateOfBirthScreen(),
+      home: const ResultScreen(),
     );
-  }
-}
-
-class DateOfBirthScreen extends StatelessWidget {
-  const DateOfBirthScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: Stack(
-        children: [
-          const _Background(),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              SizedBox(height: MediaQuery.of(context).size.height / 4),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _Background extends StatelessWidget {
-  const _Background({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

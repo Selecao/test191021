@@ -19,14 +19,16 @@ class ChoiceScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               SizedBox(height: MediaQuery.of(context).size.height / 4),
-              const ChoiceButton(
+              ChoiceButton(
                 title: 'Track my period',
                 subtitle: 'contraception and wellbeing',
+                onTap: () {},
               ),
               const SizedBox(height: 73.0),
-              const ChoiceButton(
+              ChoiceButton(
                 title: 'Get pregnant',
                 subtitle: 'learn about reproductive health',
+                onTap: () {},
               ),
             ],
           ),
@@ -39,16 +41,19 @@ class ChoiceScreen extends StatelessWidget {
 class ChoiceButton extends StatelessWidget {
   final String title;
   final String subtitle;
+  final VoidCallback? onTap;
 
-  const ChoiceButton({Key? key, required this.title, required this.subtitle})
-      : super(key: key);
+  const ChoiceButton({
+    Key? key,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        print("$title $subtitle");
-      },
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(left: 34, right: 37),
         padding: const EdgeInsets.fromLTRB(12.0, 31.0, 17.0, 31.0),
@@ -65,7 +70,7 @@ class ChoiceButton extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: AppTextTheme.headline4,
+                    style: AppTextTheme.headline5,
                   ),
                   Row(
                     children: [
@@ -104,51 +109,42 @@ class _Background extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.removePadding(
-      context: context,
-      removeTop: true,
-      child: ListView(
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                SvgPicture.asset(
-                  AppIcons.screen1top,
-                  width: MediaQuery.of(context).size.width / 2,
-                  alignment: Alignment.centerLeft,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            const SizedBox(width: 67.0),
-                            SvgPicture.asset(
-                              AppIcons.screen1mid,
-                              width: MediaQuery.of(context).size.width / 2.7,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.width / 2.7),
-                      ],
-                    ),
-                    SvgPicture.asset(
-                      AppIcons.screen1bottom,
-                      width: MediaQuery.of(context).size.width / 5.5,
-                      alignment: Alignment.bottomRight,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          SvgPicture.asset(
+            AppIcons.screen1top,
+            width: MediaQuery.of(context).size.width / 2,
+            alignment: Alignment.centerLeft,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      const SizedBox(width: 67.0),
+                      SvgPicture.asset(
+                        AppIcons.screen1mid,
+                        width: MediaQuery.of(context).size.width / 2.7,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.width / 2.7),
+                ],
+              ),
+              SvgPicture.asset(
+                AppIcons.screen1bottom,
+                width: MediaQuery.of(context).size.width / 5.5,
+                alignment: Alignment.bottomRight,
+              ),
+            ],
           ),
         ],
       ),

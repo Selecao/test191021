@@ -17,6 +17,7 @@ dependencies:
   intl: ^0.17.0
   provider: ^5.0.0
   cupertino_icons: ^1.0.2
+  flutter_hooks: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -33,7 +34,9 @@ flutter:
   assets:
     - assets/svg_icons/
 
-fonts:
-  - family: Nunito
-    fonts:
-      - asset: fonts/Nunito-Regular.ttf
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-Bold.ttf
+        - asset: assets/fonts/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito-SemiBold.ttf
